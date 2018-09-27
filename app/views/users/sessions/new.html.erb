@@ -1,0 +1,43 @@
+<div class='header section1'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm text-center'>
+        <h1>web<span class='colorlogo'>scan</span></h1>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-3 text-center'>
+      </div>
+      <div class='col-sm-6 text-center'>
+        <hr class='hr-grey'>
+        <h4>What websites automatically redirect to HTTPS?</h4>
+      </div>
+      <div class='col-sm-3 text-center'>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-md-4 offset-md-4">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+        </div>
+        <br>
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", class: "btn-block" %>
+        </div>
+      <% end %>
+      <br><br>
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

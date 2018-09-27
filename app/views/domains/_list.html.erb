@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h2>HTTPS encryption on the web</h2>
+    <p>Below is the list of the most popular websites (based on the Alexa Traffic Rank) showing which ones automatically redirect insecure web requests (HTTP) to HTTPS.</p>
+    <br>
+    <h3>Here's how it works.</h3>
+    <p>
+      WebScan looks for 301 or 302 redirects from a HTTP web request to HTTPS. The domain gets a <%= "\u2714" %> if it redirects to HTTPS
+      in 5 or less redirects.</p>
+    <p>Some websites redirect differently depending on your geographic location. These checks are being performed
+      from Canada so the results are what occurs when in Canada. The checks are performed with the user-agent set to mimick Google
+      Chrome versiom 68. The data will be updated periodically.
+    </p>
+    <p>If you have any questions, I can be found on Twitter at @iamtonyarthur.
+    </p>
+    <br>
+  </div>
+</div>
+<% if current_user %>
+  <hr>
+  <div class='row'>
+    <div class='col-sm'>
+      Refresh domains<br>
+      <%= render 'domains/form' %>
+    </div>
+    <div class='col-sm'>
+      Check if domains pass the HTTPS test<br>
+      <%= link_to "Check Websites HTTPS Status", check_websites_path, class: "btn btn-secondary btn-sm" %>
+    </div>
+    <div class='col-sm'>
+      <br>
+      <%= link_to "Logout".html_safe, destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+    </div>
+  </div>
+  <hr>
+<% end %>
+<br>
+<table class='table' align='center'>
+  <thead class='thead-dark'>
+    <tr>
+      <th scope='col'>Alexa<br>Rank</th>
+      <th scope='col' class='w-25'>Domain</th>
+      <th scope='col' class='text-center'>Country</th>
+      <th scope='col' class='text-center'>Redirect to HTTPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @domains.each do |domain| %>
+    <tr>
+      <td>
+        <%= domain.rank %>
+      </td>
+      <td>
+        <%= domain.domain_name %>
+      </td>
+      <td>
+        <center>
+          <% if !domain.country.blank? %>
+            <h3><%= domain.country.tr('A-Z', "\u{1F1E6}-\u{1F1FF}") %></h3>
+          <% else %>
+            <h3><%= "\u003f" %></h3>
+          <% end %>
+        </center>
+      </td>
+      <td>
+        <center>
+          <% if domain.redirect_to_https == true %>
+            <h3><%= "\u2714" %></h3>
+          <% else %>
+            <%= "\u274c" %>
+          <% end %>
+        </center>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

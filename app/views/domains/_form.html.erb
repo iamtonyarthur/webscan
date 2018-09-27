@@ -1,0 +1,6 @@
+<%= form_tag import_domains_path, multipart: true do %>
+  <div>
+    <%= file_field_tag :file, class: "btn btn-secondary btn-sm" %>
+    <%= submit_tag "Refresh Domains", class: "btn btn-secondary btn-sm" %>
+  </div>
+<% end %>
