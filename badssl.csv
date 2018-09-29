@@ -1,0 +1,8 @@
+﻿domain_name,alexa_rank,country
+self-signed.badssl.com,1,
+revoked.badssl.com,2,
+wrong.host.badssl.com,3,
+untrusted-root.badssl.com,4,
+no-subject.badssl.com,5,
+http.badssl.com,6,
+expired.badssl.com,7,

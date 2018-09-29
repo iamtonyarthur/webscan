@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_234105) do
+ActiveRecord::Schema.define(version: 2018_09_28_044743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2018_09_26_234105) do
     t.integer "rank", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "certificate_status"
+    t.index ["certificate_status"], name: "index_domains_on_certificate_status"
     t.index ["country"], name: "index_domains_on_country"
     t.index ["domain_name"], name: "index_domains_on_domain_name", unique: true
     t.index ["rank"], name: "index_domains_on_rank"

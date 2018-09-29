@@ -42,6 +42,7 @@
       <th scope='col' class='w-25'>Domain</th>
       <th scope='col' class='text-center'>Country</th>
       <th scope='col' class='text-center'>Redirect to HTTPS</th>
+      <th scope='col'>Certificate Status</th>
     </tr>
   </thead>
   <tbody>
@@ -70,6 +71,15 @@
             <%= "\u274c" %>
           <% end %>
         </center>
+      </td>
+      <td>
+        <% if !domain.certificate_status.nil? %>
+          <% if domain.certificate_status.include? "error" %>
+            <%= /(?<=\()(.*)(?=\))/.match(domain.certificate_status) %>
+          <% else %>
+            <%= domain.certificate_status %>
+          <% end %>
+        <% end %>
       </td>
     </tr>
     <% end %>
