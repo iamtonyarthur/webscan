@@ -16,6 +16,7 @@ First, you will need a working Ruby on Rails environment. Rails works on macOS, 
 
 Next, run these commands at the command prompt to create the database and migrate the migrations.
 ```sh
+$ bundle install
 $ rails db:create db:migrate
 ```
 Once you have created the database, you will need to manually add a user account.

@@ -1,17 +1,21 @@
 <div class="row">
   <div class="col-sm-12 text-center">
-    <h2>HTTPS encryption on the web</h2>
-    <p>Below is the list of the most popular websites (based on the Alexa Traffic Rank) showing which ones automatically redirect insecure web requests (HTTP) to HTTPS.</p>
-    <br>
-    <h3>Here's how it works.</h3>
-    <p>
-      WebScan looks for 301 or 302 redirects from a HTTP web request to HTTPS. The domain gets a <%= "\u2714" %> if it redirects to HTTPS
-      in 5 or less redirects.</p>
-    <p>Some websites redirect differently depending on your geographic location. These checks are being performed
-      from Canada so the results are what occurs when in Canada. The checks are performed with the user-agent set to mimick Google
-      Chrome versiom 68. The data will be updated periodically.
+    <p><a href="https://github.com/iamtonyarthur/webscan"><strong>WebScan
+    </strong></a> is a fun little personal research project by
+    <a href="https://twitter.com/iamtonyarthur"><strong>Tony Arthur</strong>.</a>
     </p>
-    <p>If you have any questions, I can be found on Twitter at @iamtonyarthur.
+    <p>
+      WebScan allows you to upload a list of domains (in CSV format). It then
+      attempts to connect to the website (located at the domain) using HTTP.
+      It checks whether the website automatically redirects to HTTPS via 301 or
+      302 redirects. Keep in mind that some websites may redirect differently
+      depending on your geographic location.
+      <br><br>For websites that redirect to HTTPS, WebScan examines the
+      website's certificate. It can identify self-signed certificates,
+      expired certificates and certificates with untrusted root. It cannot
+      identify revoked certificates or certificates without a subject.
+      <br><br>All checks are performed with the user-agent set to mimick Google
+      Chrome 70 beta.
     </p>
     <br>
   </div>
@@ -29,7 +33,7 @@
     </div>
     <div class='col-sm'>
       <br>
-      <%= link_to "Logout".html_safe, destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
     </div>
   </div>
   <hr>
